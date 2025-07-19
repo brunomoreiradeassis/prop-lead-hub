@@ -98,7 +98,7 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar className={isCollapsed ? "w-16" : "w-72"} collapsible="icon">
+    <Sidebar className={isCollapsed ? "w-16" : "w-64"} collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
         <div className="flex items-center gap-2 px-4 py-3">
           <Building className="h-8 w-8 text-sidebar-primary" />

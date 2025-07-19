@@ -16,8 +16,11 @@ import {
   Clock,
   CheckCircle
 } from "lucide-react"
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+
   const stats = [
     {
       title: "Total de Clientes",
@@ -85,7 +88,7 @@ const Index = () => {
   ]
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="space-y-8">
       {/* Hero Section - Apresentação da Financiadora */}
       <div className="relative bg-gradient-primary rounded-xl p-8 border">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
@@ -144,10 +147,7 @@ const Index = () => {
             <Calendar className="h-4 w-4 mr-2" />
             Hoje
           </Button>
-          <Button size="sm">
-            <Plus className="h-4 w-4 mr-2" />
-            Novo Cliente
-          </Button>
+          {/* Removido o botão "+ Novo Cliente" */}
         </div>
       </div>
 
@@ -192,19 +192,19 @@ const Index = () => {
             <CardTitle>Ações Rápidas</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/clientes')}>
               <Users className="h-4 w-4 mr-2" />
               Cadastrar Cliente
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/imoveis')}>
               <Building2 className="h-4 w-4 mr-2" />
               Adicionar Imóvel
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/financiamentos')}>
               <CreditCard className="h-4 w-4 mr-2" />
               Simular Financiamento
             </Button>
-            <Button className="w-full justify-start" variant="outline">
+            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/relatorios')}>
               <FileText className="h-4 w-4 mr-2" />
               Gerar Relatório
             </Button>
@@ -267,13 +267,13 @@ const Index = () => {
                 </div>
               </div>
               <div className="p-4 border rounded-lg">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-medium text-sm">Reuniões Hoje</h3>
-                    <p className="text-xs text-muted-foreground">Agendadas</p>
-                  </div>
-                  <p className="text-2xl font-bold text-success">5</p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-medium text-sm">Reuniões Hoje</h3>
+                  <p className="text-xs text-muted-foreground">Agendadas</p>
                 </div>
+                <p className="text-2xl font-bold text-success">5</p>
+              </div>
               </div>
             </div>
           </CardContent>

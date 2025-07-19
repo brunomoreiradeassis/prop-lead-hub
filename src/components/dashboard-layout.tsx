@@ -21,16 +21,16 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-background">
+      <div className="min-h-screen flex flex-col md:flex-row w-full bg-background">
         <AppSidebar />
         
         <div className="flex-1 flex flex-col">
           {/* Header */}
           <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="flex h-16 items-center justify-between px-6">
-              <div className="flex items-center gap-2">
-                <SidebarTrigger className="h-8 w-8" />
-                <div className="h-6 w-px bg-border" />
+            <div className="flex h-16 items-center justify-between">
+              <div className="flex items-center gap-2 pl-4">
+                {/* SidebarTrigger visible on medium and larger screens, hidden on small screens */}
+                <SidebarTrigger className="h-8 w-8 max-md:hidden" />
               </div>
               
               <div className="flex items-center gap-4">
@@ -78,7 +78,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 overflow-y-auto">
+          <main className="flex-1 overflow-y-auto p-6">
             {children}
           </main>
         </div>
