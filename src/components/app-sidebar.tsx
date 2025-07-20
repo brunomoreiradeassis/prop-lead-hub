@@ -9,7 +9,6 @@ import {
   BarChart3,
   Settings,
   HelpCircle,
-  Building,
   List,
   IdCard,
   Star,
@@ -114,12 +113,16 @@ export function AppSidebar() {
 
   return (
     <Sidebar 
-      className={isCollapsed ? "w-16" : "w-64"} 
+      className={isCollapsed ? "w-12" : "w-64"} 
       collapsible="icon"
     >
       <SidebarHeader className="border-b border-sidebar-border">
-        <div className="flex items-center gap-2 px-4 py-3">
-          <Building className="h-8 w-8 text-sidebar-primary" />
+        <div className="flex items-center gap-1 px-6 py-3">
+          <img 
+            src="/favicon.ico" 
+            alt="Logo" 
+            className="h-12 w-12 text-sidebar-primary" 
+          />
           {!isCollapsed && (
             <div>
               <h1 className="text-lg font-bold text-sidebar-foreground">HomeFintech</h1>

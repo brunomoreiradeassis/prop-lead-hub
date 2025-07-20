@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Building, Building2, Users, Calendar, BarChart3, Eye, EyeOff, UserPlus, LogIn } from "lucide-react"
+import { Building2, Users, Calendar, BarChart3, Eye, EyeOff, UserPlus, LogIn } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 const Login = () => {
@@ -49,7 +49,11 @@ const Login = () => {
         {/* Left Side - Branding */}
         <div className="text-center lg:text-left space-y-6">
           <div className="flex items-center justify-center lg:justify-start gap-3">
-            <Building className="h-12 w-12 text-primary" />
+            <img 
+              src="/favicon.ico" 
+              alt="Logo" 
+              className="h-16 w-16 text-primary" 
+            />
             <div>
               <h1 className="text-4xl font-bold text-foreground">HomeFintech</h1>
               <p className="text-xl text-muted-foreground">CRM Imobiliário</p>
