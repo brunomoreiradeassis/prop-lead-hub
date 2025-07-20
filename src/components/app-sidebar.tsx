@@ -31,7 +31,7 @@ import {
 const menuItems = [
   {
     title: "Início",
-    url: "/",
+    url: "/inicio",
     icon: Home,
     description: "Visão geral do sistema"
   },
@@ -90,18 +90,7 @@ const bottomItems = [
     url: "/ajuda",
     icon: HelpCircle,
   },
-  {
-    title: "Bruno Moreira Dev", 
-    TextSize: "4", // Texto que aparecerá
-    isText: true,               // Marca como texto (sem ação)
-    icon: Star,                 // Sem ícone
-  },
 ];
-
-// Na parte do render/return do seu componente, após mapear os bottomItems, adicione:
-<div className="bottom-footer-text">
-  Bruno Moreira Dev
-</div>
 
 export function AppSidebar() {
   const { state } = useSidebar()
@@ -110,8 +99,8 @@ export function AppSidebar() {
   const isCollapsed = state === "collapsed"
 
   const isActive = (path: string) => {
-    if (path === "/") {
-      return currentPath === "/"
+    if (path === "/inicio") {
+      return currentPath === "/inicio"
     }
     return currentPath.startsWith(path)
   }

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import Clientes from "./pages/Clientes";
 import Agendamentos from "./pages/Agendamentos";
 import Imoveis from "./pages/Imoveis";
@@ -31,21 +32,60 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <DashboardLayout>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/clientes" element={<Clientes />} />
-              <Route path="/agendamentos" element={<Agendamentos />} />
-              <Route path="/imoveis" element={<Imoveis />} />
-              <Route path="/consorcios" element={<Consorcios />} />
-              <Route path="/financiamentos" element={<Financiamentos />} />
-              <Route path="/contratos" element={<Contratos />} />
-              <Route path="/relatorios" element={<Relatorios />} />
-              <Route path="/configuracoes" element={<Configuracoes />} />
-              <Route path="/ajuda" element={<Ajuda />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </DashboardLayout>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/inicio" element={
+              <DashboardLayout>
+                <Index />
+              </DashboardLayout>
+            } />
+            <Route path="/clientes" element={
+              <DashboardLayout>
+                <Clientes />
+              </DashboardLayout>
+            } />
+            <Route path="/agendamentos" element={
+              <DashboardLayout>
+                <Agendamentos />
+              </DashboardLayout>
+            } />
+            <Route path="/imoveis" element={
+              <DashboardLayout>
+                <Imoveis />
+              </DashboardLayout>
+            } />
+            <Route path="/consorcios" element={
+              <DashboardLayout>
+                <Consorcios />
+              </DashboardLayout>
+            } />
+            <Route path="/financiamentos" element={
+              <DashboardLayout>
+                <Financiamentos />
+              </DashboardLayout>
+            } />
+            <Route path="/contratos" element={
+              <DashboardLayout>
+                <Contratos />
+              </DashboardLayout>
+            } />
+            <Route path="/relatorios" element={
+              <DashboardLayout>
+                <Relatorios />
+              </DashboardLayout>
+            } />
+            <Route path="/configuracoes" element={
+              <DashboardLayout>
+                <Configuracoes />
+              </DashboardLayout>
+            } />
+            <Route path="/ajuda" element={
+              <DashboardLayout>
+                <Ajuda />
+              </DashboardLayout>
+            } />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

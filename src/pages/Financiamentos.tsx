@@ -19,6 +19,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import {
   Select,
   SelectContent,
@@ -272,6 +273,104 @@ const Financiamentos = () => {
         </div>
         
         <div className="flex gap-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="h-4 w-4 mr-2" />
+                Novo Financiamento
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Cadastrar Novo Financiamento</DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+                <div className="space-y-2">
+                  <Label htmlFor="cliente">Cliente *</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o cliente" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {financiamentos.map((f) => (
+                        <SelectItem key={f.id} value={f.cliente}>
+                          {f.cliente}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="imovel">Imóvel *</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o imóvel" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {Array.from(new Set(financiamentos.map(f => f.imovel))).map((imovel, index) => (
+                        <SelectItem key={index} value={imovel}>
+                          {imovel}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="banco">Banco *</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o banco" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Caixa Econômica">Caixa Econômica</SelectItem>
+                      <SelectItem value="Banco do Brasil">Banco do Brasil</SelectItem>
+                      <SelectItem value="Bradesco">Bradesco</SelectItem>
+                      <SelectItem value="Itaú">Itaú</SelectItem>
+                      <SelectItem value="Santander">Santander</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="valor">Valor Financiado *</Label>
+                  <Input id="valor" type="number" placeholder="R$ 0,00" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="entrada">Valor da Entrada</Label>
+                  <Input id="entrada" type="number" placeholder="R$ 0,00" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="prazo">Prazo (meses) *</Label>
+                  <Input id="prazo" type="number" placeholder="Ex: 420" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="taxa">Taxa de Juros (% a.a.)</Label>
+                  <Input id="taxa" type="number" step="0.01" placeholder="Ex: 8.99" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="status">Status *</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="analise">Em Análise</SelectItem>
+                      <SelectItem value="aprovado">Aprovado</SelectItem>
+                      <SelectItem value="pendente">Pendente</SelectItem>
+                      <SelectItem value="recusado">Recusado</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <Label htmlFor="observacoes">Observações</Label>
+                  <Textarea id="observacoes" placeholder="Informações adicionais sobre o financiamento..." />
+                </div>
+              </div>
+              <div className="flex flex-col-reverse md:flex-row justify-end gap-3">
+                <Button variant="outline" className="w-full md:w-auto">Cancelar</Button>
+                <Button className="w-full md:w-auto">Salvar Financiamento</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline">

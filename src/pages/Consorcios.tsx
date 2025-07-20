@@ -214,14 +214,123 @@ const Consorcios = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Landmark className="h-8 w-8 text-primary" />
-        <div>
-          <h1 className="text-3xl font-bold">Gerenciamento de Consórcios</h1>
-          <p className="text-muted-foreground">
-            Acompanhe os consórcios dos seus clientes
-          </p>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Landmark className="h-8 w-8 text-primary" />
+          <div>
+            <h1 className="text-3xl font-bold">Gerenciamento de Consórcios</h1>
+            <p className="text-muted-foreground">
+              Acompanhe os consórcios dos seus clientes
+            </p>
+          </div>
         </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>
+              <Plus className="h-4 w-4 mr-2" />
+              Novo Consórcio
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>Cadastrar Novo Consórcio</DialogTitle>
+            </DialogHeader>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="cliente">Cliente *</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione o cliente" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {consorcios.map((consorcio) => (
+                      <SelectItem key={consorcio.id} value={consorcio.cliente}>
+                        {consorcio.cliente}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="cota">Número da Cota *</Label>
+                <Input id="cota" placeholder="Ex: A12345" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="tipo">Tipo de Consórcio *</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione o tipo" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Imobiliário">Imobiliário</SelectItem>
+                    <SelectItem value="Automóvel">Automóvel</SelectItem>
+                    <SelectItem value="Serviços">Serviços</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="valor">Valor do Crédito *</Label>
+                <Input id="valor" type="number" placeholder="R$ 0,00" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="parcela">Valor da Parcela *</Label>
+                <Input id="parcela" type="number" placeholder="R$ 0,00" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="prazo">Prazo (meses) *</Label>
+                <Input id="prazo" type="number" placeholder="Ex: 180" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="taxaConversao">Taxa de Conversão (%)</Label>
+                <div className="relative">
+                  <Input id="taxaConversao" type="number" placeholder="Ex: 85" />
+                  <Percent className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="administradora">Administradora *</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione a administradora" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Porto Seguro Consórcios">Porto Seguro</SelectItem>
+                    <SelectItem value="Bradesco Consórcios">Bradesco</SelectItem>
+                    <SelectItem value="Itaú Consórcios">Itaú</SelectItem>
+                    <SelectItem value="Santander Consórcios">Santander</SelectItem>
+                    <SelectItem value="BB Consórcios">Banco do Brasil</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="status">Status *</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione o status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ativo">Ativo</SelectItem>
+                    <SelectItem value="contemplado">Contemplado</SelectItem>
+                    <SelectItem value="inativo">Inativo</SelectItem>
+                    <SelectItem value="cancelado">Cancelado</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="contemplacao">Data de Contemplação</Label>
+                <Input id="contemplacao" type="date" />
+              </div>
+              <div className="md:col-span-2 space-y-2">
+                <Label htmlFor="observacoes">Observações</Label>
+                <Textarea id="observacoes" placeholder="Informações adicionais sobre o consórcio..." />
+              </div>
+            </div>
+            <div className="flex flex-col-reverse md:flex-row justify-end gap-3">
+              <Button variant="outline" className="w-full md:w-auto">Cancelar</Button>
+              <Button className="w-full md:w-auto">Salvar Consórcio</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Stats Cards */}
@@ -299,113 +408,6 @@ const Consorcios = () => {
                 </SelectContent>
               </Select>
             </div>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button className="w-full md:w-auto">
-                  <Plus className="h-4 w-4 mr-2" />
-                  Novo Consórcio
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-2xl">
-                <DialogHeader>
-                  <DialogTitle>Cadastrar Novo Consórcio</DialogTitle>
-                </DialogHeader>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="cliente">Cliente *</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione o cliente" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {consorcios.map((consorcio) => (
-                          <SelectItem key={consorcio.id} value={consorcio.cliente}>
-                            {consorcio.cliente}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="cota">Número da Cota *</Label>
-                    <Input id="cota" placeholder="Ex: A12345" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="tipo">Tipo de Consórcio *</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione o tipo" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Imobiliário">Imobiliário</SelectItem>
-                        <SelectItem value="Automóvel">Automóvel</SelectItem>
-                        <SelectItem value="Serviços">Serviços</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="valor">Valor do Crédito *</Label>
-                    <Input id="valor" type="number" placeholder="R$ 0,00" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="parcela">Valor da Parcela *</Label>
-                    <Input id="parcela" type="number" placeholder="R$ 0,00" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="prazo">Prazo (meses) *</Label>
-                    <Input id="prazo" type="number" placeholder="Ex: 180" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="taxaConversao">Taxa de Conversão (%)</Label>
-                    <div className="relative">
-                      <Input id="taxaConversao" type="number" placeholder="Ex: 85" />
-                      <Percent className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="administradora">Administradora *</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione a administradora" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Porto Seguro Consórcios">Porto Seguro</SelectItem>
-                        <SelectItem value="Bradesco Consórcios">Bradesco</SelectItem>
-                        <SelectItem value="Itaú Consórcios">Itaú</SelectItem>
-                        <SelectItem value="Santander Consórcios">Santander</SelectItem>
-                        <SelectItem value="BB Consórcios">Banco do Brasil</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="status">Status *</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione o status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="ativo">Ativo</SelectItem>
-                        <SelectItem value="contemplado">Contemplado</SelectItem>
-                        <SelectItem value="inativo">Inativo</SelectItem>
-                        <SelectItem value="cancelado">Cancelado</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="contemplacao">Data de Contemplação</Label>
-                    <Input id="contemplacao" type="date" />
-                  </div>
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="observacoes">Observações</Label>
-                    <Textarea id="observacoes" placeholder="Informações adicionais sobre o consórcio..." />
-                  </div>
-                </div>
-                <div className="flex flex-col-reverse md:flex-row justify-end gap-3">
-                  <Button variant="outline" className="w-full md:w-auto">Cancelar</Button>
-                  <Button className="w-full md:w-auto">Salvar Consórcio</Button>
-                </div>
-              </DialogContent>
-            </Dialog>
           </div>
         </CardContent>
       </Card>
