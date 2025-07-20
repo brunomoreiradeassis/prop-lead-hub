@@ -31,23 +31,24 @@ import {
   Users,
   Building2,
   CreditCard,
-  DollarSign
+  DollarSign,
+  Handshake
 } from "lucide-react"
 
 const Relatorios = () => {
   const vendaMensalData = [
-    { mes: "Jan", vendas: 12, valor: 8500000 },
-    { mes: "Fev", vendas: 15, valor: 10200000 },
-    { mes: "Mar", vendas: 18, valor: 12300000 },
-    { mes: "Abr", vendas: 14, valor: 9800000 },
-    { mes: "Mai", vendas: 20, valor: 13500000 },
-    { mes: "Jun", vendas: 22, valor: 15200000 },
-    { mes: "Jul", vendas: 25, valor: 17800000 },
-    { mes: "Ago", verdas: 23, valor: 16500000 },
-    { mes: "Set", vendas: 27, valor: 18900000 },
-    { mes: "Out", vendas: 24, valor: 16200000 },
-    { mes: "Nov", vendas: 26, valor: 18100000 },
-    { mes: "Dez", vendas: 29, valor: 20500000 }
+    { mes: "Jan", vendas: 12, valor: 8500000, consorcios: 5 },
+    { mes: "Fev", vendas: 15, valor: 10200000, consorcios: 7 },
+    { mes: "Mar", vendas: 18, valor: 12300000, consorcios: 8 },
+    { mes: "Abr", vendas: 14, valor: 9800000, consorcios: 6 },
+    { mes: "Mai", vendas: 20, valor: 13500000, consorcios: 9 },
+    { mes: "Jun", vendas: 22, valor: 15200000, consorcios: 10 },
+    { mes: "Jul", vendas: 25, valor: 17800000, consorcios: 12 },
+    { mes: "Ago", vendas: 23, valor: 16500000, consorcios: 11 },
+    { mes: "Set", vendas: 27, valor: 18900000, consorcios: 13 },
+    { mes: "Out", vendas: 24, valor: 16200000, consorcios: 11 },
+    { mes: "Nov", vendas: 26, valor: 18100000, consorcios: 12 },
+    { mes: "Dez", vendas: 29, valor: 20500000, consorcios: 14 }
   ]
 
   const statusClientesData = [
@@ -58,20 +59,41 @@ const Relatorios = () => {
   ]
 
   const tipoImovelData = [
-    { tipo: "Apartamento", quantidade: 45 },
-    { tipo: "Casa", quantidade: 28 },
-    { tipo: "Cobertura", quantidade: 12 },
-    { tipo: "Comercial", quantidade: 8 },
-    { tipo: "Terreno", quantidade: 7 }
+    { tipo: "Apartamento", quantidade: 45, consorcios: 18 },
+    { tipo: "Casa", quantidade: 28, consorcios: 12 },
+    { tipo: "Cobertura", quantidade: 12, consorcios: 5 },
+    { tipo: "Comercial", quantidade: 8, consorcios: 3 },
+    { tipo: "Terreno", quantidade: 7, consorcios: 2 }
   ]
 
   const conversaoData = [
-    { mes: "Jan", leads: 150, convertidos: 12, taxa: 8.0 },
-    { mes: "Fev", leads: 180, convertidos: 15, taxa: 8.3 },
-    { mes: "Mar", leads: 200, convertidos: 18, taxa: 9.0 },
-    { mes: "Abr", leads: 165, convertidos: 14, taxa: 8.5 },
-    { mes: "Mai", leads: 220, convertidos: 20, taxa: 9.1 },
-    { mes: "Jun", leads: 245, convertidos: 22, taxa: 9.0 }
+    { mes: "Jan", leads: 150, convertidos: 12, taxa: 8.0, consorcios: 5 },
+    { mes: "Fev", leads: 180, convertidos: 15, taxa: 8.3, consorcios: 7 },
+    { mes: "Mar", leads: 200, convertidos: 18, taxa: 9.0, consorcios: 8 },
+    { mes: "Abr", leads: 165, convertidos: 14, taxa: 8.5, consorcios: 6 },
+    { mes: "Mai", leads: 220, convertidos: 20, taxa: 9.1, consorcios: 9 },
+    { mes: "Jun", leads: 245, convertidos: 22, taxa: 9.0, consorcios: 10 }
+  ]
+
+  const consorcioData = [
+    { mes: "Jan", contratos: 5, valor: 1200000, contemplacoes: 2 },
+    { mes: "Fev", contratos: 7, valor: 1750000, contemplacoes: 3 },
+    { mes: "Mar", contratos: 8, valor: 2100000, contemplacoes: 4 },
+    { mes: "Abr", contratos: 6, valor: 1500000, contemplacoes: 2 },
+    { mes: "Mai", contratos: 9, valor: 2400000, contemplacoes: 5 },
+    { mes: "Jun", contratos: 10, valor: 2800000, contemplacoes: 6 },
+    { mes: "Jul", contratos: 12, valor: 3500000, contemplacoes: 7 },
+    { mes: "Ago", contratos: 11, valor: 3200000, contemplacoes: 6 },
+    { mes: "Set", contratos: 13, valor: 3800000, contemplacoes: 8 },
+    { mes: "Out", contratos: 11, valor: 3300000, contemplacoes: 7 },
+    { mes: "Nov", contratos: 12, valor: 3600000, contemplacoes: 8 },
+    { mes: "Dez", contratos: 14, valor: 4200000, contemplacoes: 9 }
+  ]
+
+  const tipoConsorcioData = [
+    { tipo: "Imobiliário", quantidade: 65, percentual: 65 },
+    { tipo: "Automotivo", quantidade: 25, percentual: 25 },
+    { tipo: "Serviços", quantidade: 10, percentual: 10 }
   ]
 
   const metrics = [
@@ -102,6 +124,13 @@ const Relatorios = () => {
       change: "-2.1%",
       isPositive: false,
       icon: CreditCard
+    },
+    {
+      title: "Consórcios Ativos",
+      value: "98",
+      change: "+18.3%",
+      isPositive: true,
+      icon: Handshake
     }
   ]
 
@@ -112,7 +141,7 @@ const Relatorios = () => {
         <div className="flex items-center gap-3">
           <BarChart3 className="h-8 w-8 text-primary" />
           <div>
-            <h1 className="text-3xl font-bold">Relatórios e Análises</h1>
+            <h1 className="text-3xl font-bold">Dashboard</h1>
             <p className="text-muted-foreground">
               Métricas e insights do seu negócio
             </p>
@@ -120,13 +149,13 @@ const Relatorios = () => {
         </div>
         
         <div className="flex gap-2">
-          <Select defaultValue="2024">
+          <Select defaultValue="2025">
             <SelectTrigger className="w-32">
               <Calendar className="h-4 w-4 mr-2" />
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="2024">2024</SelectItem>
+              <SelectItem value="2025">2025</SelectItem>
               <SelectItem value="2023">2023</SelectItem>
               <SelectItem value="2022">2022</SelectItem>
             </SelectContent>
@@ -139,7 +168,7 @@ const Relatorios = () => {
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
         {metrics.map((metric, index) => (
           <Card key={index}>
             <CardContent className="p-6">
@@ -170,7 +199,7 @@ const Relatorios = () => {
         {/* Vendas Mensais */}
         <Card>
           <CardHeader>
-            <CardTitle>Vendas Mensais - 2024</CardTitle>
+            <CardTitle>Vendas Mensais - 2025</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -180,12 +209,16 @@ const Relatorios = () => {
                 <YAxis />
                 <Tooltip 
                   formatter={(value, name) => [
-                    name === 'vendas' ? value : `R$ ${Number(value).toLocaleString('pt-BR')}`,
-                    name === 'vendas' ? 'Vendas' : 'Valor'
+                    name === 'vendas' ? value : 
+                    name === 'consorcios' ? value : 
+                    `R$ ${Number(value).toLocaleString('pt-BR')}`,
+                    name === 'vendas' ? 'Vendas' : 
+                    name === 'consorcios' ? 'Consórcios' : 'Valor'
                   ]}
                 />
                 <Legend />
-                <Bar dataKey="vendas" fill="#3b82f6" name="Vendas" />
+                <Bar dataKey="vendas" fill="#3b82f6" name="Vendas Diretas" />
+                <Bar dataKey="consorcios" fill="#8b5cf6" name="Consórcios" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -234,7 +267,9 @@ const Relatorios = () => {
                 <XAxis type="number" />
                 <YAxis dataKey="tipo" type="category" width={80} />
                 <Tooltip />
-                <Bar dataKey="quantidade" fill="#10b981" />
+                <Legend />
+                <Bar dataKey="quantidade" fill="#10b981" name="Vendas Diretas" />
+                <Bar dataKey="consorcios" fill="#8b5cf6" name="Consórcios" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -255,14 +290,84 @@ const Relatorios = () => {
                   formatter={(value, name) => [
                     name === 'taxa' ? `${value}%` : value,
                     name === 'taxa' ? 'Taxa de Conversão' : 
-                    name === 'leads' ? 'Leads' : 'Convertidos'
+                    name === 'leads' ? 'Leads' : 
+                    name === 'convertidos' ? 'Convertidos' : 'Consórcios'
                   ]}
                 />
                 <Legend />
                 <Line type="monotone" dataKey="taxa" stroke="#f59e0b" strokeWidth={2} name="Taxa %" />
                 <Bar dataKey="leads" fill="#3b82f6" name="Leads" />
                 <Bar dataKey="convertidos" fill="#10b981" name="Convertidos" />
+                <Bar dataKey="consorcios" fill="#8b5cf6" name="Consórcios" />
               </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Row 3 - Consórcios */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Performance de Consórcios */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Handshake className="h-5 w-5" />
+              Performance de Consórcios
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={consorcioData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="mes" />
+                <YAxis yAxisId="left" orientation="left" />
+                <YAxis yAxisId="right" orientation="right" />
+                <Tooltip 
+                  formatter={(value, name) => [
+                    name === 'contratos' ? value : 
+                    name === 'contemplacoes' ? value : 
+                    `R$ ${Number(value).toLocaleString('pt-BR')}`,
+                    name === 'contratos' ? 'Contratos' : 
+                    name === 'contemplacoes' ? 'Contemplações' : 'Valor'
+                  ]}
+                />
+                <Legend />
+                <Bar yAxisId="left" dataKey="contratos" fill="#8b5cf6" name="Contratos" />
+                <Bar yAxisId="right" dataKey="contemplacoes" fill="#ec4899" name="Contemplações" />
+                <Line yAxisId="left" type="monotone" dataKey="valor" stroke="#14b8a6" name="Valor (R$)" />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        {/* Tipos de Consórcio */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Handshake className="h-5 w-5" />
+              Distribuição por Tipo de Consórcio
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={tipoConsorcioData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="percentual"
+                >
+                  <Cell fill="#8b5cf6" />
+                  <Cell fill="#a855f7" />
+                  <Cell fill="#d946ef" />
+                </Pie>
+                <Tooltip formatter={(value) => [`${value}%`, "Percentual"]} />
+                <Legend />
+              </PieChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
@@ -327,26 +432,26 @@ const Relatorios = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CreditCard className="h-5 w-5" />
-              Performance Financeira
+              <Handshake className="h-5 w-5" />
+              Performance de Consórcios
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex justify-between">
-              <span>Comissões Totais</span>
-              <span className="font-bold">R$ 182.500</span>
+              <span>Contratos Ativos</span>
+              <span className="font-bold">98</span>
             </div>
             <div className="flex justify-between">
-              <span>Comissão Média</span>
-              <span className="font-bold">R$ 5.370</span>
+              <span>Taxa de Contemplação</span>
+              <span className="font-bold text-success">78%</span>
             </div>
             <div className="flex justify-between">
-              <span>Aprovações Bancárias</span>
-              <span className="font-bold text-success">89%</span>
+              <span>Valor Médio por Contrato</span>
+              <span className="font-bold">R$ 285K</span>
             </div>
             <div className="flex justify-between">
-              <span>ROI do Marketing</span>
-              <span className="font-bold text-success">340%</span>
+              <span>Receita com Consórcios</span>
+              <span className="font-bold">R$ 420K</span>
             </div>
           </CardContent>
         </Card>

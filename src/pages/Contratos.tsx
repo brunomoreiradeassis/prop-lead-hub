@@ -38,7 +38,8 @@ import {
   File,
   CheckCircle,
   Clock,
-  AlertCircle
+  AlertCircle,
+  Users
 } from "lucide-react"
 
 const Contratos = () => {
@@ -48,13 +49,13 @@ const Contratos = () => {
   const contratos = [
     {
       id: 1,
-      numero: "CNT-2024-001",
+      numero: "CNT-2025-001",
       cliente: "Maria Silva Santos",
       imovel: "Rua das Flores, 123",
       tipo: "Compra e Venda",
       valor: 650000,
       status: "assinado",
-      dataVencimento: "2024-02-15",
+      dataVencimento: "2025-02-15",
       documentos: [
         { nome: "Contrato Principal", tipo: "PDF", tamanho: "2.1 MB" },
         { nome: "Documentos Pessoais", tipo: "PDF", tamanho: "1.8 MB" },
@@ -63,13 +64,13 @@ const Contratos = () => {
     },
     {
       id: 2,
-      numero: "CNT-2024-002",
+      numero: "CNT-2025-002",
       cliente: "João Carlos Oliveira",
       imovel: "Av. Paulista, 1000",
       tipo: "Financiamento",
       valor: 1200000,
       status: "pendente",
-      dataVencimento: "2024-02-20",
+      dataVencimento: "2025-02-20",
       documentos: [
         { nome: "Proposta Financiamento", tipo: "PDF", tamanho: "1.5 MB" },
         { nome: "Comprovantes Renda", tipo: "PDF", tamanho: "2.8 MB" }
@@ -77,13 +78,13 @@ const Contratos = () => {
     },
     {
       id: 3,
-      numero: "CNT-2024-003",
+      numero: "CNT-2025-003",
       cliente: "Ana Paula Costa",
       imovel: "Rua Ipanema, 45",
       tipo: "Locação",
       valor: 3500,
       status: "revisao",
-      dataVencimento: "2024-02-10",
+      dataVencimento: "2025-02-10",
       documentos: [
         { nome: "Contrato Locação", tipo: "PDF", tamanho: "1.2 MB" },
         { nome: "Fiador", tipo: "PDF", tamanho: "2.1 MB" }
@@ -91,15 +92,58 @@ const Contratos = () => {
     },
     {
       id: 4,
-      numero: "CNT-2024-004",
+      numero: "CNT-2025-004",
       cliente: "Pedro Henrique Lima",
       imovel: "Rua das Palmeiras, 78",
       tipo: "Compra e Venda",
       valor: 520000,
       status: "vencido",
-      dataVencimento: "2024-01-30",
+      dataVencimento: "2025-01-30",
       documentos: [
         { nome: "Minuta Contrato", tipo: "PDF", tamanho: "1.7 MB" }
+      ]
+    },
+    {
+      id: 5,
+      numero: "CON-2025-001",
+      cliente: "Consórcio Imobiliário ABC",
+      imovel: "Vários imóveis - Lote 5",
+      tipo: "Consórcio Imobiliário",
+      valor: 250000,
+      status: "assinado",
+      dataVencimento: "2025-12-31",
+      documentos: [
+        { nome: "Contrato de Consórcio", tipo: "PDF", tamanho: "3.5 MB" },
+        { nome: "Regulamento", tipo: "PDF", tamanho: "2.8 MB" },
+        { nome: "Cronograma de Pagamentos", tipo: "PDF", tamanho: "1.2 MB" }
+      ]
+    },
+    {
+      id: 6,
+      numero: "CON-2025-002",
+      cliente: "Grupo de Consórcio XYZ",
+      imovel: "Condomínio Solaris - Unidade 12",
+      tipo: "Consórcio Imobiliário",
+      valor: 180000,
+      status: "pendente",
+      dataVencimento: "2025-06-30",
+      documentos: [
+        { nome: "Proposta de Consórcio", tipo: "PDF", tamanho: "2.1 MB" },
+        { nome: "Termo de Adesão", tipo: "PDF", tamanho: "1.5 MB" }
+      ]
+    },
+    {
+      id: 7,
+      numero: "CON-2025-003",
+      cliente: "Consórcio Residencial Premium",
+      imovel: "Residencial Green Valley - Bloco B",
+      tipo: "Consórcio Imobiliário",
+      valor: 320000,
+      status: "revisao",
+      dataVencimento: "2025-03-15",
+      documentos: [
+        { nome: "Minuta de Contrato", tipo: "PDF", tamanho: "2.4 MB" },
+        { nome: "Documentação do Grupo", tipo: "PDF", tamanho: "4.2 MB" }
       ]
     }
   ]
@@ -182,6 +226,8 @@ const Contratos = () => {
                     <SelectItem value="maria">Maria Silva Santos</SelectItem>
                     <SelectItem value="joao">João Carlos Oliveira</SelectItem>
                     <SelectItem value="ana">Ana Paula Costa</SelectItem>
+                    <SelectItem value="consorcio1">Consórcio Imobiliário ABC</SelectItem>
+                    <SelectItem value="consorcio2">Grupo de Consórcio XYZ</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -195,6 +241,8 @@ const Contratos = () => {
                     <SelectItem value="flores">Rua das Flores, 123</SelectItem>
                     <SelectItem value="paulista">Av. Paulista, 1000</SelectItem>
                     <SelectItem value="ipanema">Rua Ipanema, 45</SelectItem>
+                    <SelectItem value="lote5">Vários imóveis - Lote 5</SelectItem>
+                    <SelectItem value="solaris">Condomínio Solaris - Unidade 12</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -209,6 +257,7 @@ const Contratos = () => {
                     <SelectItem value="financiamento">Financiamento</SelectItem>
                     <SelectItem value="locacao">Locação</SelectItem>
                     <SelectItem value="permuta">Permuta</SelectItem>
+                    <SelectItem value="consorcio">Consórcio Imobiliário</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -251,7 +300,7 @@ const Contratos = () => {
         <Card>
           <CardContent className="p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-primary">47</p>
+              <p className="text-2xl font-bold text-primary">54</p>
               <p className="text-sm text-muted-foreground">Total de Contratos</p>
             </div>
           </CardContent>
@@ -259,7 +308,7 @@ const Contratos = () => {
         <Card>
           <CardContent className="p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-success">32</p>
+              <p className="text-2xl font-bold text-success">38</p>
               <p className="text-sm text-muted-foreground">Assinados</p>
             </div>
           </CardContent>
@@ -267,7 +316,7 @@ const Contratos = () => {
         <Card>
           <CardContent className="p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-warning">12</p>
+              <p className="text-2xl font-bold text-warning">13</p>
               <p className="text-sm text-muted-foreground">Pendentes</p>
             </div>
           </CardContent>
@@ -288,7 +337,7 @@ const Contratos = () => {
           <CardTitle>Modelos de Contrato</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <Button variant="outline" className="h-20 flex-col">
               <FileText className="h-6 w-6 mb-2" />
               Compra e Venda
@@ -304,6 +353,10 @@ const Contratos = () => {
             <Button variant="outline" className="h-20 flex-col">
               <FileText className="h-6 w-6 mb-2" />
               Permuta
+            </Button>
+            <Button variant="outline" className="h-20 flex-col">
+              <Users className="h-6 w-6 mb-2" />
+              Consórcio
             </Button>
           </div>
         </CardContent>

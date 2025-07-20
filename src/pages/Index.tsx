@@ -1,7 +1,8 @@
-import { StatsCard } from "@/components/stats-card"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+// pages/index.tsx
+import { StatsCard } from "@/components/stats-card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Users,
   Building2,
@@ -14,9 +15,11 @@ import {
   Shield,
   Award,
   Clock,
-  CheckCircle
-} from "lucide-react"
+  CheckCircle,
+  Handshake
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { SimuladorFinanciamento } from "@/components/simulador-financiamento";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -46,7 +49,7 @@ const Index = () => {
       icon: TrendingUp,
       trend: { value: 3, isPositive: true }
     }
-  ]
+  ];
 
   const bankPartners = [
     { name: "Banco do Brasil", taxa: "8.99%", prazo: "420 meses" },
@@ -54,7 +57,28 @@ const Index = () => {
     { name: "Itaú", taxa: "9.50%", prazo: "420 meses" },
     { name: "Bradesco", taxa: "9.75%", prazo: "360 meses" },
     { name: "Santander", taxa: "10.10%", prazo: "420 meses" }
-  ]
+  ];
+
+  const consortiumPartners = [
+    { 
+      name: "Consórcio BB Imóveis", 
+      vantagens: ["Taxas reduzidas", "Sorteios mensais", "Lance livre"],
+      prazo: "180 meses",
+      participantes: "15.000+"
+    },
+    { 
+      name: "Consórcio Caixa", 
+      vantagens: ["Crédito até R$ 2MM", "Administração pela Caixa", "Contemplação por lance"],
+      prazo: "150 meses",
+      participantes: "12.500+"
+    },
+    { 
+      name: "Consórcio Itaú", 
+      vantagens: ["Seguro inclusivo", "Assistência residencial", "Cartão de benefícios"],
+      prazo: "160 meses",
+      participantes: "8.000+"
+    }
+  ];
 
   const recentActivities = [
     {
@@ -85,7 +109,7 @@ const Index = () => {
       time: "Há 2 dias",
       status: "info"
     }
-  ]
+  ];
 
   return (
     <div className="space-y-8">
@@ -93,14 +117,14 @@ const Index = () => {
       <div className="relative bg-gradient-primary rounded-xl p-8 border">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="flex-1">
-            <h1 className="text-4xl font-bold text-foreground mb-2">FinanceImo</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-2">HomeFintech</h1>
             <p className="text-xl text-muted-foreground mb-4">
               Sua parceira completa em soluções imobiliárias
             </p>
             <p className="text-muted-foreground mb-6 max-w-2xl">
-              Há mais de 15 anos no mercado, a FinanceImo é especializada em financiamento imobiliário 
-              e oferece as melhores condições do mercado. Nossa plataforma conecta você aos principais 
-              bancos e consórcios do país.
+              Há mais de 15 anos no mercado, a HomeFintech é especializada em financiamento imobiliário 
+              e consórcios, oferecendo as melhores condições do mercado. Nossa plataforma conecta você 
+              aos principais bancos e consórcios do país.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2">
@@ -115,19 +139,29 @@ const Index = () => {
                 <Clock className="h-5 w-5 text-success" />
                 <span className="text-sm font-medium">Aprovação Rápida</span>
               </div>
+              <div className="flex items-center gap-2">
+                <Handshake className="h-5 w-5 text-success" />
+                <span className="text-sm font-medium">Consórcios Especiais</span>
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-4">
             <div className="bg-card rounded-lg p-4 shadow-medium">
               <div className="text-center">
                 <p className="text-2xl font-bold text-success">R$ 850M+</p>
-                <p className="text-sm text-muted-foreground">Financiados em 2024</p>
+                <p className="text-sm text-muted-foreground">Financiados em 2025</p>
               </div>
             </div>
             <div className="bg-card rounded-lg p-4 shadow-medium">
               <div className="text-center">
                 <p className="text-2xl font-bold text-primary">98%</p>
                 <p className="text-sm text-muted-foreground">Taxa de Aprovação</p>
+              </div>
+            </div>
+            <div className="bg-card rounded-lg p-4 shadow-medium">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-warning">R$ 320M+</p>
+                <p className="text-sm text-muted-foreground">Em consórcios</p>
               </div>
             </div>
           </div>
@@ -139,7 +173,7 @@ const Index = () => {
         <div>
           <h2 className="text-2xl font-bold text-foreground">Painel de Controle</h2>
           <p className="text-muted-foreground">
-            Gerencie seus clientes e financiamentos
+            Gerencie seus clientes, financiamentos e consórcios
           </p>
         </div>
         <div className="flex gap-2">
@@ -147,7 +181,6 @@ const Index = () => {
             <Calendar className="h-4 w-4 mr-2" />
             Hoje
           </Button>
-          {/* Removido o botão "+ Novo Cliente" */}
         </div>
       </div>
 
@@ -161,7 +194,7 @@ const Index = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Bank Partners */}
-        <Card className="lg:col-span-2">
+        <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <CreditCard className="h-5 w-5" />
@@ -186,6 +219,47 @@ const Index = () => {
           </CardContent>
         </Card>
 
+        {/* Consortium Partners */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Handshake className="h-5 w-5" />
+              Consórcios Imobiliários
+            </CardTitle>
+            <p className="text-sm text-muted-foreground font-normal">
+              Adquira seu imóvel sem juros através de nossos consórcios
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {consortiumPartners.map((consortium, index) => (
+                <div key={index} className="p-4 rounded-lg border bg-card">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="font-medium">{consortium.name}</p>
+                      <div className="mt-2 space-y-1">
+                        {consortium.vantagens.map((vantagem, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-success" />
+                            <p className="text-sm text-muted-foreground">{vantagem}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <Badge variant="outline">{consortium.prazo}</Badge>
+                      <p className="text-xs text-muted-foreground mt-1">{consortium.participantes} participantes</p>
+                    </div>
+                  </div>
+                  <Button variant="outline" size="sm" className="w-full mt-3">
+                    Saiba mais
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Quick Actions */}
         <Card>
           <CardHeader>
@@ -200,9 +274,10 @@ const Index = () => {
               <Building2 className="h-4 w-4 mr-2" />
               Adicionar Imóvel
             </Button>
-            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/financiamentos')}>
-              <CreditCard className="h-4 w-4 mr-2" />
-              Simular Financiamento
+            <SimuladorFinanciamento variant="outline" className="w-full justify-start" />
+            <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/consorcios')}>
+              <Handshake className="h-4 w-4 mr-2" />
+              Simular Consórcio
             </Button>
             <Button className="w-full justify-start" variant="outline" onClick={() => navigate('/relatorios')}>
               <FileText className="h-4 w-4 mr-2" />
@@ -267,13 +342,13 @@ const Index = () => {
                 </div>
               </div>
               <div className="p-4 border rounded-lg">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-medium text-sm">Reuniões Hoje</h3>
-                  <p className="text-xs text-muted-foreground">Agendadas</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-medium text-sm">Lances de Consórcio</h3>
+                    <p className="text-xs text-muted-foreground">Para avaliação</p>
+                  </div>
+                  <p className="text-2xl font-bold text-success">5</p>
                 </div>
-                <p className="text-2xl font-bold text-success">5</p>
-              </div>
               </div>
             </div>
           </CardContent>

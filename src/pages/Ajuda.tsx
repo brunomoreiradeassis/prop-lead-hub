@@ -16,7 +16,9 @@ import {
   MessageSquare,
   Phone,
   Mail,
-  ExternalLink
+  ExternalLink,
+  Instagram,
+  MessageCircle
 } from "lucide-react"
 
 const Ajuda = () => {
@@ -89,21 +91,23 @@ const Ajuda = () => {
 
   const quickLinks = [
     {
+      title: "Meu Instagram",
+      description: "Acompanhe meu trabalho e novidades",
+      icon: Instagram,
+      link: "https://instagram.com/_brunoomoreira",
+      external: true
+    },
+    {
+      title: "WhatsApp",
+      description: "Fale comigo pelo Whatsapp",
+      icon: MessageCircle,
+      link: "https://wa.me/62993046419",
+      external: true
+    },
+    {
       title: "Tutorial Completo",
       description: "Guia passo a passo para usar o sistema",
       icon: Book,
-      link: "#"
-    },
-    {
-      title: "Vídeo Aulas",
-      description: "Aprenda com nossos vídeos tutoriais",
-      icon: Video,
-      link: "#"
-    },
-    {
-      title: "API Documentation",
-      description: "Documentação técnica para desenvolvedores",
-      icon: ExternalLink,
       link: "#"
     }
   ]
@@ -144,6 +148,20 @@ const Ajuda = () => {
                 <div>
                   <h3 className="font-semibold mb-2">{link.title}</h3>
                   <p className="text-sm text-muted-foreground">{link.description}</p>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="mt-2"
+                    asChild
+                  >
+                    <a 
+                      href={link.link} 
+                      target={link.external ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
+                    >
+                      Acessar
+                    </a>
+                  </Button>
                 </div>
               </div>
             </CardContent>
@@ -224,9 +242,9 @@ const Ajuda = () => {
               <Phone className="h-6 w-6 text-primary" />
               <div>
                 <h3 className="font-medium">Telefone</h3>
-                <p className="text-sm text-muted-foreground">(11) 3000-0000</p>
+                <p className="text-sm text-muted-foreground">(62) 99304-6419</p>
                 <Badge variant="outline" className="mt-2">
-                  Seg-Sex, 8h-18h
+                  Seg-Sab, 8h-21h
                 </Badge>
               </div>
             </div>
@@ -235,7 +253,7 @@ const Ajuda = () => {
               <Mail className="h-6 w-6 text-primary" />
               <div>
                 <h3 className="font-medium">E-mail</h3>
-                <p className="text-sm text-muted-foreground">suporte@financeimo.com</p>
+                <p className="text-sm text-muted-foreground">brunomoreira640493@gmail.com</p>
                 <Badge variant="outline" className="mt-2">
                   Resposta em 24h
                 </Badge>

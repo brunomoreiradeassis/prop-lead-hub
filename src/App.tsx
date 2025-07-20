@@ -7,7 +7,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import Index from "./pages/Index";
 import Clientes from "./pages/Clientes";
+import Agendamentos from "./pages/Agendamentos";
 import Imoveis from "./pages/Imoveis";
+import Consorcios from "./pages/Consorcios";
 import Financiamentos from "./pages/Financiamentos";
 import Contratos from "./pages/Contratos";
 import Relatorios from "./pages/Relatorios";
@@ -33,7 +35,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/clientes" element={<Clientes />} />
+              <Route path="/agendamentos" element={<Agendamentos />} />
               <Route path="/imoveis" element={<Imoveis />} />
+              <Route path="/consorcios" element={<Consorcios />} />
               <Route path="/financiamentos" element={<Financiamentos />} />
               <Route path="/contratos" element={<Contratos />} />
               <Route path="/relatorios" element={<Relatorios />} />
