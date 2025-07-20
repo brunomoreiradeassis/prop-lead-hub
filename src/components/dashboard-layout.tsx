@@ -50,9 +50,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                   <DropdownMenuContent className="w-56 z-50" align="end" forceMount>
                     <DropdownMenuLabel className="font-normal">
                       <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">Rafael Corretor</p>
+                        <p className="text-sm font-medium leading-none">Bruno Moreira</p>
                         <p className="text-xs leading-none text-muted-foreground">
-                          rafael@email.com
+                          brunomoreira640493@gmail.com
                         </p>
                       </div>
                     </DropdownMenuLabel>
