@@ -125,7 +125,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar 
-      className={`fixed h-screen z-50 ${isCollapsed ? "w-16" : "w-64"}`} 
+      className={isCollapsed ? "w-16" : "w-64"} 
       collapsible="icon"
     >
       <SidebarHeader className="border-b border-sidebar-border">

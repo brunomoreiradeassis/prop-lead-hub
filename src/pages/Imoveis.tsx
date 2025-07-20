@@ -149,7 +149,7 @@ const Imoveis = () => {
   })
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-4 md:space-y-6 max-w-full overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -321,8 +321,9 @@ const Imoveis = () => {
         <CardHeader>
           <CardTitle>Portfólio de Imóveis ({filteredImoveis.length})</CardTitle>
         </CardHeader>
-        <CardContent>
-          <Table>
+        <CardContent className="p-0">
+          <div className="overflow-x-auto">
+            <Table className="min-w-[800px] md:w-full">
             <TableHeader>
               <TableRow>
                 <TableHead>Imóvel</TableHead>
@@ -383,7 +384,8 @@ const Imoveis = () => {
                 </TableRow>
               ))}
             </TableBody>
-          </Table>
+            </Table>
+          </div>
         </CardContent>
       </Card>
     </div>

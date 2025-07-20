@@ -61,7 +61,62 @@ All colors MUST be HSL.
     --shadow-subtle: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
     --shadow-medium: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
     --shadow-large: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
+}
+
+/* Responsiveness and overflow fixes */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent text overflow */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive containers */
+.container {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Table responsive */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card responsive */
+.card {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent buttons from shrinking */
+.btn-no-shrink {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
+  
+  /* Hide overflow on mobile */
+  .mobile-hide-overflow {
+    overflow: hidden;
+  }
+}
 
   .dark {
     --background: 0 0% 5%;

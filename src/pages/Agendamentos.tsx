@@ -483,7 +483,7 @@ const Agendamentos = () => {
         <CardHeader>
           <CardTitle>Lista de Agendamentos ({sortedAndFilteredAgendamentos.length})</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0">
           <div className="overflow-x-auto">
             <Table className="min-w-[900px] md:w-full">
               <TableHeader>
